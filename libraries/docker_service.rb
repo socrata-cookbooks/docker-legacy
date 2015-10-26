@@ -1,6 +1,6 @@
 module DockerCookbook
+  require 'docker_service_base'
   class DockerService < DockerServiceBase
-
     use_automatic_resource_name
 
     # register with the resource resolution system
@@ -10,32 +10,48 @@ module DockerCookbook
     property :install_method, %w(binary script package none auto), default: 'binary', desired_state: false
     property :service_manager, %w(execute sysvinit upstart systemd auto), default: 'auto', desired_state: false
 
+    # docker_installation_binary
+    property :checksum, String
+    property :docker_bin, String
+    property :source, String
+    property :version, String
+
+    # docker_installation_script
+    property :repo, %w(main test experimental)
+    property :script_url, String
+    
+    # docker_installation_package
+    property :package_version, String
+    property :version, String
+
+    ################
+    # Helper Methods
+    ################
+    def copy_properties_to(to, *properties)
+      properties = self.class.properties.keys if properties.empty?
+      properties.each do |p|
+        # If the property is set on from, and exists on to, set
+        # the property on to
+        if to.class.properties.include?(p) && property_is_set?(p)
+          to.send(p, self.send(p))
+        end
+      end
+    end
+    
     #########
     # Actions
     #########
 
     action :create do
-      property_def = proc do
-        # used by binary install
-        source new_resource.source if new_resource.source
-        checksum new_resource.checksum if new_resource.checksum
-        version new_resource.version if new_resource.version
-        # used by script install
-        repo new_resource.repo if new_resource.repo
-        script_url new_resource.script_url if new_resource.script_url
-        action :create
-        notifies :restart, new_resource
-      end
-
       case install_method
       when 'auto'
-        docker_installation(new_resource.instance, &property_def)
+        docker_installation(new_resource.instance)
       when 'binary'
-        docker_installation_binary(new_resource.instance, &property_def)
+        docker_installation_binary(new_resource.instance)
       when 'script'
-        docker_installation_script(new_resource.instance, &property_def)
+        docker_installation_script(new_resource.instance)
       when 'package'
-        docker_installation_package(new_resource.instance, &property_def)
+        docker_installation_package(new_resource.instance)
       when 'none'
         Chef::Log.info('Skipping Docker installation. Assuming it was handled previously.')
       end
@@ -48,13 +64,16 @@ module DockerCookbook
     end
 
     action :start do
+      property_def = proc do
+      end
+
       case service_manager
       when 'auto'
         docker_service_manager(new_resource.instance, &property_def)
       when 'execute'
         docker_service_manager_execute(new_resource.instance, &property_def)
       when 'sysvinit'
-        docker_service_manager_sysvinit(new_resource.instance, &property_def)                
+        docker_service_manager_sysvinit(new_resource.instance, &property_def)
       when 'upstart'
         docker_service_manager_upstart(new_resource.instance, &property_def)
       when 'systemd'
@@ -73,7 +92,6 @@ module DockerCookbook
         action :restart
       end
     end
-    
   end
 end
 

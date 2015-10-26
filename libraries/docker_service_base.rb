@@ -61,7 +61,6 @@ module DockerCookbook
     alias_method :tlscert, :tls_server_cert
     alias_method :tlskey, :tls_server_key
     alias_method :tlsverify, :tls_verify
-
   end
 end
 
