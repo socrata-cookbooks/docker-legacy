@@ -1,8 +1,8 @@
 module DockerCookbook
-  class DockerServiceExecute < DockerService
+  class DockerServiceManagerExecute < DockerServiceBase
     use_automatic_resource_name
 
-    provides :docker_service, os: 'linux'
+    provides :docker_service_manager, os: 'linux'
 
     # Start the service
     action :start do
