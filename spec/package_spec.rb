@@ -31,7 +31,7 @@ shared_examples_for 'an apt-based system' do
   end
 end
 
-describe 'docker::package' do
+describe 'docker-legacy::package' do
   context 'when running on centos' do
     it_behaves_like 'a yum-based system' do
       let(:chef_run) do

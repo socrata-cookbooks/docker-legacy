@@ -80,7 +80,12 @@ default['docker']['binary']['url'] = "http://get.docker.io/builds/#{node['kernel
 ## Package installation attributes
 
 default['docker']['package']['action'] = 'install'
-default['docker']['package']['distribution'] = 'docker'
+default['docker']['package']['distribution'] = value_for_platform(
+  'ubuntu' => {
+    '14.04' => 'ubuntu-trusty'
+  },
+  'default' => 'docker'
+)
 default['docker']['package']['name'] = value_for_platform(
   'amazon' => {
     'default' => 'docker'
@@ -99,7 +104,7 @@ default['docker']['package']['name'] = value_for_platform(
     'default' => 'homebrew/binary/docker'
   },
   'ubuntu' => {
-    %w(12.04 12.10 13.04 13.10 14.04) => 'lxc-docker',
+    %w(12.04 12.10 13.04 13.10 14.04) => 'docker-engine',
     'default' => 'docker.io'
   },
   'default' => nil
@@ -109,14 +114,14 @@ default['docker']['package']['repo_url'] = value_for_platform(
     'default' => 'https://get.docker.io/ubuntu'
   },
   'ubuntu' => {
-    %w(12.04 12.10 13.04 13.10 14.04) => 'https://get.docker.io/ubuntu',
+    %w(12.04 12.10 13.04 13.10 14.04) => 'https://apt.dockerproject.org/repo',
     'default' => nil
   },
   'default' => nil
 )
-default['docker']['package']['repo_keyserver'] = 'hkp://keyserver.ubuntu.com:80'
+default['docker']['package']['repo_keyserver'] = 'hkp://pgp.mit.edu:80'
 # Found at https://get.docker.io/ubuntu/
-default['docker']['package']['repo_key'] = 'A88D21E9'
+default['docker']['package']['repo_key'] = '58118E89F3A912897C070ADBF76221572C52609D'
 
 ## Source installation attributes
 

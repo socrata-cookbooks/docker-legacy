@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'docker::dep_check' do
+describe 'docker-legacy::dep_check' do
   context 'when running on darwin' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: 'mac_os_x', version: '10.9.2').converge(described_recipe)

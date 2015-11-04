@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'docker::binary' do
+describe 'docker-legacy::binary' do
   context 'by default' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '12.04') do |node|

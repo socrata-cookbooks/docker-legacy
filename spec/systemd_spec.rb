@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'docker::systemd' do
+describe 'docker-legacy::systemd' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end

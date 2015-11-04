@@ -1,4 +1,4 @@
-include_recipe 'docker::dep_check'
+include_recipe 'docker-legacy::dep_check'
 
 log 'breaking_changes_alert' do
   message <<-MSG
@@ -40,8 +40,8 @@ when 'debian', 'ubuntu'
 end
 
 if node['docker']['exec_driver'] == 'lxc'
-  include_recipe 'docker::cgroups'
-  include_recipe 'docker::lxc'
+  include_recipe 'docker-legacy::cgroups'
+  include_recipe 'docker-legacy::lxc'
 end
 
 directory 'docker-graph' do
@@ -51,7 +51,7 @@ end
 
 unless node['docker']['install_type'] == 'package'
   if node['platform'] == 'ubuntu' && Chef::VersionConstraint.new('< 13.10').include?(node['platform_version'])
-    include_recipe "docker::#{node['docker']['storage_driver']}" if node['docker']['storage_driver']
+    include_recipe "docker-legacy::#{node['docker']['storage_driver']}" if node['docker']['storage_driver']
   end
   if node['docker']['install_type'] == 'binary'
     include_recipe 'git'
@@ -80,6 +80,6 @@ unless node['docker']['install_type'] == 'package'
   end
 end
 
-include_recipe "docker::#{node['docker']['install_type']}"
-include_recipe 'docker::group' if node['docker']['group']
-include_recipe "docker::#{node['docker']['init_type']}"
+include_recipe "docker-legacy::#{node['docker']['install_type']}"
+include_recipe 'docker-legacy::group' if node['docker']['group']
+include_recipe "docker-legacy::#{node['docker']['init_type']}"
