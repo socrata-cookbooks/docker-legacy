@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'docker::sysv' do
+describe 'docker-legacy::sysv' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end

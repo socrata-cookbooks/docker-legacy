@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'docker::cgroups' do
+describe 'docker-legacy::cgroups' do
   context 'when running on oracle 6.5' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: 'oracle', version: '6.5').converge(described_recipe)

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'docker::devicemapper' do
+describe 'docker-legacy::devicemapper' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end

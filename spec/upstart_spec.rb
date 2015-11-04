@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'docker::upstart' do
+describe 'docker-legacy::upstart' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end

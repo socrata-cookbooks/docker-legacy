@@ -1,6 +1,6 @@
 require File.expand_path('../support/helpers', __FILE__)
 
-describe_recipe 'docker::sysv' do
+describe_recipe 'docker-legacy::sysv' do
   include Helpers::Docker
 
   it 'starts docker' do

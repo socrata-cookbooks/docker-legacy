@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative 'support/matchers'
 
-describe 'docker::runit' do
+describe 'docker-legacy::runit' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end

@@ -1,6 +1,6 @@
 require File.expand_path('../support/helpers', __FILE__)
 
-describe_recipe 'docker::configuration' do
+describe_recipe 'docker-legacy::configuration' do
   include Helpers::Docker
 
   it 'has docker configuration file' do
