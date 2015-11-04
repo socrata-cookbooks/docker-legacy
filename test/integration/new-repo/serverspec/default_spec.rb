@@ -1,15 +1,16 @@
-require_relative '../../../kitchen/data/spec_helper'
+require 'serverspec'
+set :backend, :exec
 
-package 'docker' do
+describe package 'docker-engine' do
   it { should be_installed }
 end
 
-command 'docker -v' do
+describe command 'docker -v' do
   its(:exit_status) { should eq 0 }
-  its(:stdout) { should match(/docker version 1.9.0/) }
+  its(:stdout) { should match(/Docker version 1.9.0/) }
 end
 
-command 'grep "insecure-registry" /etc/default/docker' do
+describe command 'grep "insecure-registry" /etc/default/docker' do
   its(:exit_status) { should eq 0 }
   its(:stdout) { should match(/registry.insecure.com:5000/) }
 end
