@@ -84,6 +84,16 @@ suites:
 #
 # Package Installations
 #
+- name: new-repo
+  run_list:
+    - recipe[docker-legacy::default]
+  includes:
+    - ubuntu-14.04
+  attributes:
+    docker:
+      version: 1.9.0
+      insecure-registry: registry.insecure.com:5000
+
 - name: package-native
   run_list:
   - recipe[build-essential]
