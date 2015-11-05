@@ -6,7 +6,7 @@ shared_examples_for 'a non-ubuntu platform' do
   end
 end
 
-describe 'docker::lxc' do
+describe 'docker-legacy::lxc' do
   context 'when running on debian' do
     it_behaves_like 'a non-ubuntu platform' do
       let(:chef_run) do

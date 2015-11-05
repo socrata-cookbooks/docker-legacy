@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'docker::group' do
+describe 'docker-legacy::group' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end

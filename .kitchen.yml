@@ -67,6 +67,7 @@ platforms:
     require_chef_omnibus: latest
 - name: ubuntu-14.04
   run_list:
+    - recipe[apt]
     - recipe[build-essential]
   driver_config:
     box: opscode-ubuntu-14.04
@@ -84,6 +85,16 @@ suites:
 #
 # Package Installations
 #
+- name: new-repo
+  run_list:
+    - recipe[docker-legacy::default]
+  includes:
+    - ubuntu-14.04
+  attributes:
+    docker:
+      version: 1.9.0-0~trusty
+      insecure-registry: registry.insecure.com:5000
+
 - name: package-native
   run_list:
   - recipe[build-essential]

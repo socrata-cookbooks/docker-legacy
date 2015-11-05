@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative 'support/matchers'
 
-describe 'docker::default' do
+describe 'docker-legacy::default' do
   before(:each) do
     # TODO: Add to aufs cookbook
     shellout = double
@@ -80,12 +80,12 @@ describe 'docker::default' do
       end.converge(described_recipe)
     end
 
-    it 'includes the docker::cgroups recipe' do
-      expect(chef_run).to include_recipe('docker::cgroups')
+    it 'includes the docker-legacy::cgroups recipe' do
+      expect(chef_run).to include_recipe('docker-legacy::cgroups')
     end
 
-    it 'includes the docker::lxc recipe' do
-      expect(chef_run).to include_recipe('docker::lxc')
+    it 'includes the docker-legacy::lxc recipe' do
+      expect(chef_run).to include_recipe('docker-legacy::lxc')
     end
   end
 
@@ -125,8 +125,8 @@ describe 'docker::default' do
       expect(chef_run).to render_file('/usr/local/bin/cgroupfs-mount')
     end
 
-    it 'includes the docker::binary recipe' do
-      expect(chef_run).to include_recipe('docker::binary')
+    it 'includes the docker-legacy::binary recipe' do
+      expect(chef_run).to include_recipe('docker-legacy::binary')
     end
   end
 
@@ -140,8 +140,8 @@ describe 'docker::default' do
         end.converge(described_recipe)
       end
 
-      it 'includes the docker::aufs recipe' do
-        expect(chef_run).to include_recipe('docker::aufs')
+      it 'includes the docker-legacy::aufs recipe' do
+        expect(chef_run).to include_recipe('docker-legacy::aufs')
       end
     end
   end
@@ -156,7 +156,7 @@ describe 'docker::default' do
     end
 
     it 'should not manage the storagedriver' do
-      expect(chef_run).not_to include_recipe('docker::aufs')
+      expect(chef_run).not_to include_recipe('docker-legacy::aufs')
     end
   end
 
@@ -176,8 +176,8 @@ describe 'docker::default' do
       expect(chef_run).to include_recipe('golang')
     end
 
-    it 'includes the docker::source recipe' do
-      expect(chef_run).to include_recipe('docker::source')
+    it 'includes the docker-legacy::source recipe' do
+      expect(chef_run).to include_recipe('docker-legacy::source')
     end
   end
 
@@ -188,8 +188,8 @@ describe 'docker::default' do
       end.converge(described_recipe)
     end
 
-    it 'includes the docker::package recipe' do
-      expect(chef_run).to include_recipe('docker::package')
+    it 'includes the docker-legacy::package recipe' do
+      expect(chef_run).to include_recipe('docker-legacy::package')
     end
   end
 
@@ -203,8 +203,8 @@ describe 'docker::default' do
         end.converge(described_recipe)
       end
 
-      it "includes the docker::#{init} recipe" do
-        expect(chef_run).to include_recipe("docker::#{init}")
+      it "includes the docker-legacy::#{init} recipe" do
+        expect(chef_run).to include_recipe("docker-legacy::#{init}")
       end
 
       it 'creates the docker graph folder' do

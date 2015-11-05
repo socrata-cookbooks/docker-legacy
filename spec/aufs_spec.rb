@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative 'support/matchers'
 
-describe 'docker::aufs' do
+describe 'docker-legacy::aufs' do
   before(:each) do
     # TODO: Add to aufs cookbook
     shellout = double
