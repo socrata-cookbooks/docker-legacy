@@ -1,3 +1,7 @@
+## 0.51.0
+
+* Rename helper class to avoid collisions with mainline docker cookbook
+
 ## 1.0.0 (unreleased)
 
 * Changed default Docker port to IANA assigned 2375

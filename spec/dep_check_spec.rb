@@ -12,11 +12,11 @@ describe 'docker-legacy::dep_check' do
     end
 
     it 'should fail if it can\'t find VirtualBox or if VirtualBox is not in the run_list' do
-      expect { chef_run }.to raise_error(DockerCookbook::Exceptions::MissingDependency)
+      expect { chef_run }.to raise_error(DockerLegacyCookbook::Exceptions::MissingDependency)
     end
 
     it 'should fail if it can\'t find boot2docker or if boot2docker is not in the run_list' do
-      expect { chef_run }.to raise_error(DockerCookbook::Exceptions::MissingDependency)
+      expect { chef_run }.to raise_error(DockerLegacyCookbook::Exceptions::MissingDependency)
     end
   end
 
@@ -28,7 +28,7 @@ describe 'docker-legacy::dep_check' do
     end
 
     it 'should fail if kernel < 3.8' do
-      expect { chef_run }.to raise_error(DockerCookbook::Exceptions::InvalidKernelVersion)
+      expect { chef_run }.to raise_error(DockerLegacyCookbook::Exceptions::InvalidKernelVersion)
     end
   end
 
@@ -41,7 +41,7 @@ describe 'docker-legacy::dep_check' do
       end
 
       it 'should fail' do
-        expect { chef_run }.to raise_error(DockerCookbook::Exceptions::InvalidArchitecture)
+        expect { chef_run }.to raise_error(DockerLegacyCookbook::Exceptions::InvalidArchitecture)
       end
     end
 
@@ -51,7 +51,7 @@ describe 'docker-legacy::dep_check' do
       end
 
       it 'should fail' do
-        expect { chef_run }.to raise_error(DockerCookbook::Exceptions::InvalidPlatformVersion)
+        expect { chef_run }.to raise_error(DockerLegacyCookbook::Exceptions::InvalidPlatformVersion)
       end
     end
 
@@ -64,7 +64,7 @@ describe 'docker-legacy::dep_check' do
       end
 
       it 'should fail' do
-        expect { chef_run }.to raise_error(DockerCookbook::Exceptions::InvalidKernelVersion)
+        expect { chef_run }.to raise_error(DockerLegacyCookbook::Exceptions::InvalidKernelVersion)
       end
     end
 
@@ -76,7 +76,7 @@ describe 'docker-legacy::dep_check' do
       end
 
       it 'should fail' do
-        expect { chef_run }.to raise_error(DockerCookbook::Exceptions::InvalidKernelVersion)
+        expect { chef_run }.to raise_error(DockerLegacyCookbook::Exceptions::InvalidKernelVersion)
       end
     end
   end
@@ -90,7 +90,7 @@ describe 'docker-legacy::dep_check' do
       end
 
       it 'should fail' do
-        expect { chef_run }.to raise_error(DockerCookbook::Exceptions::InvalidArchitecture)
+        expect { chef_run }.to raise_error(DockerLegacyCookbook::Exceptions::InvalidArchitecture)
       end
     end
   end
