@@ -259,7 +259,7 @@ EOM
     # Pairs with the dep_check recipe.
     #
     # Parameters:
-    # @execption - DockerCookbook exception to throw
+    # @execption - DockerLegacyCookbook exception to throw
     # @action - symbol representing which action to take
     # @msg - string of message to print
     #
@@ -312,7 +312,7 @@ class Chef
   end
 end
 
-class DockerCookbook
+class DockerLegacyCookbook
   class Exceptions
     class MissingDependency < RuntimeError; end
     class InvalidPlatformVersion < StandardError; end
