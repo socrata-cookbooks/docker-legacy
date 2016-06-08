@@ -1,6 +1,6 @@
 actions :commit, :cp, :create, :export, :kill, :redeploy, :remove, :remove_link, :remove_volume, :restart, :run, :start, :stop, :wait
 
-resource_name :docker_legacy_container
+resource_name = :docker_legacy_container
 default_action :run
 
 attribute :image, :name_attribute => true

@@ -1,6 +1,6 @@
 actions :login
 
-resource_name :docker_legacy_registry
+resource_name = :docker_legacy_registry
 default_action :login
 
 attribute :server, :name_attribute => true

@@ -1,6 +1,6 @@
 actions :build, :build_if_missing, :import, :insert, :load, :pull, :pull_if_missing, :push, :remove, :save, :tag
 
-resource_name :docker_legacy_image
+resource_name = :docker_legacy_image
 default_action :pull
 
 attribute :image_name, :name_attribute => true
