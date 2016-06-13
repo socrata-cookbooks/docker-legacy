@@ -7,6 +7,12 @@ template docker_upstart_conf_file do
   mode '0600'
   owner 'root'
   group 'root'
+  variables(
+    docker_wait_ready: '/usr/lib/docker/docker-wait-ready',
+    docker_socker: '/var/run/docker.sock'
+  )
+  notifies :stop, "service[#{docker_service}]", :immediately
+  notifies :start, "service[#{docker_service}]", :immediately
 end
 
 template docker_settings_file do

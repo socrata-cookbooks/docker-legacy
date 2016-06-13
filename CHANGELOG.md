@@ -1,3 +1,7 @@
+## 0.53.0
+
+* Backport the docker-wait-ready script from the newer docker cookbook
+
 ## 0.51.0
 
 * Rename helper class to avoid collisions with mainline docker cookbook
