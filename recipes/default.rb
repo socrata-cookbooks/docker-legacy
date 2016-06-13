@@ -49,6 +49,20 @@ directory 'docker-graph' do
   not_if { node['docker']['graph'].nil? }
 end
 
+directory '/usr/lib/docker'
+
+template '/usr/lib/docker/docker-wait-ready' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  variables(service_timeout: 20, docker_cmd: 'docker')
+end
+
+execute 'docker-wait-ready' do
+  command '/usr/lib/docker/docker-wait-ready'
+  action :nothing
+end
+
 unless node['docker']['install_type'] == 'package'
   if node['platform'] == 'ubuntu' && Chef::VersionConstraint.new('< 13.10').include?(node['platform_version'])
     include_recipe "docker-legacy::#{node['docker']['storage_driver']}" if node['docker']['storage_driver']
