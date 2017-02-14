@@ -1,3 +1,7 @@
+## 0.52.2
+
+* Increase the Docker daemon timeout
+
 ## 0.51.0
 
 * Rename helper class to avoid collisions with mainline docker cookbook

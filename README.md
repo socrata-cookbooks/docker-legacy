@@ -185,7 +185,7 @@ These attributes are under the `node['docker']` namespace.
 
 Attribute | Description | Type | Default
 ----------|-------------|------|--------
-docker_daemon_timeout | Timeout to wait for the docker daemon to start in seconds for LWRP commands | Fixnum | 10
+docker_daemon_timeout | Timeout to wait for the docker daemon to start in seconds for LWRP commands | Fixnum | 20
 
 #### docker_container Attributes
 
