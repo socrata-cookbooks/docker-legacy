@@ -186,7 +186,7 @@ default['docker']['tmpdir'] = nil
 
 # LWRP attributes
 
-default['docker']['docker_daemon_timeout'] = 10
+default['docker']['docker_daemon_timeout'] = 20
 
 ## docker_container attributes
 
