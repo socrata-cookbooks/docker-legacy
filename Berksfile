@@ -4,5 +4,5 @@ metadata
 
 group :integration do
   cookbook 'minitest-handler'
-  cookbook 'docker_test', path: 'test/cookbooks/docker_test'
+  cookbook 'docker_test', path: 'test/fixtures/cookbooks/docker_test'
 end
