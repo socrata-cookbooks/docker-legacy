@@ -2,7 +2,6 @@
 # frozen_string_literal: true
 
 source artifactory: 'https://repo.socrata.com/artifactory/api/chef/chef'
-source 'https://supermarket.chef.io
 
 metadata
 
